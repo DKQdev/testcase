@@ -1,1 +1,21 @@
-test me
+pipeline {
+	agent any
+		stages('One') {
+			steps {
+			echo 'Hello master'
+				}
+			}
+	stage('Two')	{
+		steps {
+			input('Do you want to procced?')
+			}
+		}
+	stage('Three') {
+		when {
+			not {
+				branch "master"
+				}
+			}
+		steps {
+			echo "Hello user"
+	
